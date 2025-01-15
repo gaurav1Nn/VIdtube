@@ -52,7 +52,7 @@ const userSchema = new Schema(
 
 userSchema.pre("save",async function (next){
 
-    if(!this.modeified("password")) return next() // if we are not updating pssword
+    if(!this.isModified("password")) return next() // if we are not updating pssword
 
     this.password = bcrypt.hash(this.password,10) // 10 is the no of round in crytography
 
