@@ -197,6 +197,13 @@ const refreshAcessToken = asyncHandler(async (req,res) => {
 const logoutUser = asyncHandler(async (req,res) =>{
     await User.findByIdAndUpdate(
         // to do 
+        req.user._id,
+        {
+            $set: {
+                refreshToken: undefined,
+            }
+        },
+        {new: true}
     )
 })
 export {
